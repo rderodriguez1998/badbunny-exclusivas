@@ -182,7 +182,7 @@ body {
     font-family: 'Poppins', sans-serif;
     transition: all 0.3s ease;
     background: white url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>') no-repeat 18px center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 #searchInput:focus {
@@ -203,7 +203,7 @@ table {
     border-spacing: 0;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 thead {
@@ -230,9 +230,9 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr:hover {
-    background: linear-gradient(90deg, rgba(102,126,234,0.1) 0%, rgba(118,75,162,0.1) 100%);
+    background: linear-gradient(90deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
     transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(102,126,234,0.15);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
 }
 
 td {
@@ -270,7 +270,7 @@ td:nth-child(2) strong {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Poppins', sans-serif;
 }
 
@@ -286,12 +286,12 @@ td:nth-child(2) strong {
 
 .btn-edit:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,184,148,0.4);
+    box-shadow: 0 4px 12px rgba(0, 184, 148, 0.4);
 }
 
 .btn-delete:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255,107,107,0.4);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
 }
 
 .btn-edit:active,
@@ -319,8 +319,15 @@ td:nth-child(2) strong {
 }
 
 @keyframes countPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 /* Botón flotante de música */

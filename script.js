@@ -163,7 +163,7 @@ function setupMusicPlayer() {
 
     let isPlaying = false;
     let hasInteracted = false;
-    
+
     // Función para activar la música
     const startMusic = () => {
         if (!hasInteracted) {
@@ -172,10 +172,10 @@ function setupMusicPlayer() {
                 hasInteracted = true;
                 musicIcon.textContent = '🔊';
                 toggleBtn.classList.add('playing');
-            }).catch(() => {});
+            }).catch(() => { });
         }
     };
-    
+
     // Intentar reproducir al cargar
     music.play().then(() => {
         isPlaying = true;
@@ -187,7 +187,7 @@ function setupMusicPlayer() {
         document.body.addEventListener('click', startMusic, { once: true });
         document.body.addEventListener('touchstart', startMusic, { once: true });
     });
-    
+
     // Botón para pausar/reproducir
     toggleBtn.addEventListener('click', (e) => {
         e.stopPropagation();
