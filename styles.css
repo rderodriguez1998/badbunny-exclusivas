@@ -23,7 +23,7 @@ body {
 .banner-header {
     background-image: url('banner.jpg');
     background-size: cover;
-    background-position: center -50px;
+    background-position: center 25%;
     background-repeat: no-repeat;
     color: white;
     padding: 180px 20px 40px 20px;
@@ -162,6 +162,16 @@ body {
         0 0 0 1px rgba(255, 255, 255, 0.1) inset;
     position: relative;
     overflow: hidden;
+}
+
+.info-gif {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-right: 18px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
 .info-box::before {
@@ -586,7 +596,7 @@ td:nth-child(2) strong {
     .banner-header {
         padding: 80px 15px 20px 15px;
         min-height: 180px;
-        background-position: center center;
+        background-position: center -60px;
     }
 
     .banner-title {
@@ -738,6 +748,7 @@ td:nth-child(2) strong {
     .banner-header {
         padding: 100px 15px 20px 15px;
         min-height: 180px;
+        background-position: center -100px;
     }
 
     .banner-title {
