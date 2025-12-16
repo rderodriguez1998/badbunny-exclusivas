@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
     <link rel="icon" type="image/jpeg" href="fav.jpg">
     <link rel="shortcut icon" type="image/jpeg" href="fav.jpg">
     <link rel="apple-touch-icon" href="fav.jpg">
@@ -55,8 +56,12 @@
                         <input type="date" id="date" required>
                     </div>
                     <div class="form-group">
-                        <label for="city">Ciudad:</label>
-                        <input type="text" id="city" required>
+                        <label for="city">País:</label>
+                        <input type="text" id="city" required placeholder="Ej: Puerto Rico, USA, México...">
+                    </div>
+                    <div class="form-group">
+                        <label for="spotifyLink">Enlace de Spotify:</label>
+                        <input type="url" id="spotifyLink" placeholder="https://open.spotify.com/track/...">
                     </div>
                 </div>
                 <button type="submit" class="btn-add">Agregar Canción</button>
@@ -64,7 +69,7 @@
         </div>
 
         <div class="search-section">
-            <input type="text" id="searchInput" placeholder="Buscar por canción, fecha o ciudad...">
+            <input type="text" id="searchInput" placeholder="Buscar por canción, fecha o país...">
         </div>
 
         <div class="table-container">
@@ -74,7 +79,8 @@
                         <th>#</th>
                         <th>Canción</th>
                         <th>Fecha</th>
-                        <th>Ciudad</th>
+                        <th>País</th>
+                        <th>Spotify</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
