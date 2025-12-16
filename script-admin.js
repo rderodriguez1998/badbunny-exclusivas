@@ -158,13 +158,13 @@ function renderTable(filteredSongs = null) {
     sortedSongs.forEach((song, index) => {
         const row = document.createElement('tr');
 
-        // Formatear fecha
+        // Formatear fecha con mes abreviado
         const dateObj = new Date(song.date + 'T00:00:00');
-        const formattedDate = dateObj.toLocaleDateString('es-ES', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric'
-        });
+        const monthNames = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+        const day = String(dateObj.getDate()).padStart(2, '0');
+        const month = monthNames[dateObj.getMonth()];
+        const year = dateObj.getFullYear();
+        const formattedDate = `${day}/${month}/${year}`;
 
         // Generar enlace de Spotify
         const spotifyIcon = song.spotifyLink

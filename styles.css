@@ -92,6 +92,33 @@ body {
     box-shadow: 0 4px 15px rgba(255, 193, 7, 0.5);
 }
 
+/* Instagram badge discreto en el header */
+.instagram-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 10;
+    text-decoration: none;
+}
+
+.instagram-badge svg {
+    fill: white;
+}
+
+.instagram-badge:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 20px rgba(188, 24, 136, 0.5);
+}
+
 .subtitle {
     font-size: 1.1rem;
     opacity: 0.9;
@@ -215,7 +242,7 @@ th {
     padding: 18px 20px;
     text-align: left;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -245,7 +272,7 @@ td {
 td:first-child {
     font-weight: 700;
     color: #667eea;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
 }
 
 td:nth-child(2) strong {
@@ -380,12 +407,12 @@ td:nth-child(2) strong {
 /* Responsive */
 @media (max-width: 768px) {
     .banner-header {
-        padding: 150px 20px 30px 20px;
-        min-height: 250px;
+        padding: 120px 20px 25px 20px;
+        min-height: 220px;
     }
 
     .banner-title {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     .form-grid {
@@ -393,19 +420,25 @@ td:nth-child(2) strong {
     }
 
     .table-container {
-        padding: 15px;
+        padding: 12px;
         overflow-x: auto;
     }
 
     /* Hacer la tabla más compacta en móvil */
     table {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         min-width: 100%;
     }
 
-    th,
+    th {
+        padding: 10px 6px;
+        font-size: 0.7rem;
+        white-space: nowrap;
+    }
+
     td {
-        padding: 8px 6px;
+        padding: 10px 6px;
+        font-size: 0.8rem;
         white-space: nowrap;
     }
 
@@ -413,20 +446,29 @@ td:nth-child(2) strong {
     th:first-child,
     td:first-child {
         width: 35px;
-        padding: 8px 4px;
+        padding: 10px 4px;
+        font-size: 0.8rem;
+        font-weight: 600;
     }
 
     /* Columna de canción puede envolver texto */
     th:nth-child(2),
     td:nth-child(2) {
         white-space: normal;
-        min-width: 120px;
+        min-width: 110px;
+        font-size: 0.8rem;
+    }
+
+    /* Ajustar columna de fecha */
+    th:nth-child(3),
+    td:nth-child(3) {
+        font-size: 0.75rem;
     }
 
     /* Ajustar columna de país */
     th:nth-child(4),
     td:nth-child(4) {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 
     /* Columna Spotify centrada */
@@ -434,11 +476,12 @@ td:nth-child(2) strong {
     td:nth-child(5) {
         width: 50px;
         text-align: center;
+        font-size: 0.7rem;
     }
 
     /* Banderas más pequeñas en móvil */
     .fi {
-        font-size: 1.1em !important;
+        font-size: 1em !important;
         margin-right: 4px !important;
     }
 
@@ -451,29 +494,45 @@ td:nth-child(2) strong {
     .actions {
         flex-direction: column;
         gap: 5px;
-        min-width: 120px;
+        min-width: 110px;
     }
 
     .btn-edit,
     .btn-delete {
         width: 100%;
-        padding: 6px 10px;
-        font-size: 0.8rem;
+        padding: 6px 8px;
+        font-size: 0.75rem;
+    }
+
+    .stats {
+        font-size: 0.85rem;
+    }
+
+    .instagram-badge {
+        width: 40px;
+        height: 40px;
+        top: 15px;
+        right: 15px;
+    }
+
+    .instagram-badge svg {
+        width: 18px;
+        height: 18px;
     }
 }
 
 @media (max-width: 480px) {
     body {
-        padding: 10px;
+        padding: 8px;
     }
 
     .banner-header {
-        padding: 120px 15px 25px 15px;
-        min-height: 200px;
+        padding: 100px 15px 20px 15px;
+        min-height: 180px;
     }
 
     .banner-title {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .add-section,
@@ -482,43 +541,50 @@ td:nth-child(2) strong {
     }
 
     table {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
 
-    th,
+    th {
+        padding: 8px 3px;
+        font-size: 0.65rem;
+    }
+
     td {
-        padding: 6px 4px;
+        padding: 8px 3px;
+        font-size: 0.7rem;
     }
 
     th:first-child,
     td:first-child {
-        width: 30px;
-        padding: 6px 2px;
+        width: 28px;
+        padding: 8px 2px;
+        font-size: 0.7rem;
     }
 
     /* Canción más compacta */
     th:nth-child(2),
     td:nth-child(2) {
-        min-width: 100px;
-        font-size: 0.75rem;
+        min-width: 90px;
+        font-size: 0.7rem;
     }
 
     /* Fecha más compacta */
     th:nth-child(3),
     td:nth-child(3) {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
     }
 
     /* País más compacto */
     th:nth-child(4),
     td:nth-child(4) {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
     }
 
     /* Spotify */
     th:nth-child(5),
     td:nth-child(5) {
-        width: 40px;
+        width: 38px;
+        font-size: 0.6rem;
     }
 
     td svg {
@@ -526,19 +592,41 @@ td:nth-child(2) strong {
         height: 18px !important;
     }
 
+    .fi {
+        font-size: 0.9em !important;
+        margin-right: 3px !important;
+    }
+
     .actions {
-        min-width: 100px;
+        min-width: 90px;
     }
 
     .btn-edit,
     .btn-delete {
-        padding: 5px 8px;
-        font-size: 0.7rem;
+        padding: 5px 6px;
+        font-size: 0.65rem;
     }
 
     /* Hacer el campo de búsqueda más pequeño */
     #searchInput {
-        font-size: 0.85rem;
-        padding: 10px;
+        font-size: 0.8rem;
+        padding: 10px 10px 10px 45px;
+    }
+
+    .stats {
+        font-size: 0.75rem;
+        padding: 15px 10px;
+    }
+
+    .instagram-badge {
+        width: 36px;
+        height: 36px;
+        top: 12px;
+        right: 12px;
+    }
+
+    .instagram-badge svg {
+        width: 16px;
+        height: 16px;
     }
 }
