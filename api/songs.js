@@ -1,4 +1,6 @@
 // API pública para obtener canciones (solo lectura)
+const fetch = require('node-fetch');
+
 module.exports = async function handler(req, res) {
     // Solo permitir GET
     if (req.method !== 'GET') {

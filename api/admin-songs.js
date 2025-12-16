@@ -1,5 +1,6 @@
 // API protegida para operaciones admin (POST, PUT, DELETE)
 const jwt = require('jsonwebtoken');
+const fetch = require('node-fetch');
 
 // Verificar token JWT
 function verifyToken(req) {
