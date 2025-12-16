@@ -1,9 +1,9 @@
 // Array para almacenar las canciones
 let songs = [];
 
-// Cargar datos del localStorage al iniciar
-document.addEventListener('DOMContentLoaded', () => {
-    loadFromLocalStorage();
+// Cargar datos de la nube al iniciar
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadFromCloud();
     renderTable();
     updateStats();
     setupMusicPlayer();
@@ -116,15 +116,12 @@ function updateStats() {
     document.getElementById('totalSongs').textContent = songs.length;
 }
 
-function saveToLocalStorage() {
-    localStorage.setItem('badBunnySongs', JSON.stringify(songs));
+async function saveToCloud() {
+    await dbAPI.saveSongs(songs);
 }
 
-function loadFromLocalStorage() {
-    const saved = localStorage.getItem('badBunnySongs');
-    if (saved) {
-        songs = JSON.parse(saved);
-    }
+async function loadFromCloud() {
+    songs = await dbAPI.loadSongs();
 }
 
 function showNotification(message) {

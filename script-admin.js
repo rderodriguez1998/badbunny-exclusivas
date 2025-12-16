@@ -1,9 +1,9 @@
 // Array para almacenar las canciones
 let songs = [];
 
-// Cargar datos del localStorage al iniciar
-document.addEventListener('DOMContentLoaded', () => {
-    loadFromLocalStorage();
+// Cargar datos de la nube al iniciar
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadFromCloud();
     renderTable();
     updateStats();
     setupMusicPlayer();
@@ -41,7 +41,7 @@ function addSong() {
                 showNotification('¡Canción actualizada exitosamente!');
             }
 
-            // Resetear modo edición
+            await saveToCloud();
             delete form.dataset.editingId;
             const submitBtn = form.querySelector('.btn-add');
             submitBtn.textContent = 'Agregar Canción';
@@ -58,7 +58,7 @@ function addSong() {
             showNotification('¡Canción agregada exitosamente!');
         }
 
-        saveToLocalStorage();
+        await saveToCloud();
         renderTable();
         updateStats();
 
@@ -70,7 +70,7 @@ function addSong() {
 function deleteSong(id) {
     if (confirm('¿Estás seguro de eliminar esta canción?')) {
         songs = songs.filter(song => song.id !== id);
-        saveToLocalStorage();
+        saveToCloud();
         renderTable();
         updateStats();
         showNotification('Canción eliminada');
@@ -152,15 +152,12 @@ function updateStats() {
     document.getElementById('totalSongs').textContent = songs.length;
 }
 
-function saveToLocalStorage() {
-    localStorage.setItem('badBunnySongs', JSON.stringify(songs));
+async function saveToCloud() {
+    await dbAPI.saveSongs(songs);
 }
 
-function loadFromLocalStorage() {
-    const saved = localStorage.getItem('badBunnySongs');
-    if (saved) {
-        songs = JSON.parse(saved);
-    }
+async function loadFromCloud() {
+    songs = await dbAPI.loadSongs();
 }
 
 function showNotification(message) {
