@@ -119,6 +119,63 @@ body {
     box-shadow: 0 6px 20px rgba(188, 24, 136, 0.5);
 }
 
+/* Tooltip para Instagram */
+.ig-tooltip {
+    position: absolute;
+    top: 75px;
+    right: 70px;
+    background: white;
+    padding: 10px 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    z-index: 9;
+    animation: bounce-in 0.6s ease-out 0.5s both;
+}
+
+.ig-tooltip-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #667eea;
+    white-space: nowrap;
+}
+
+.ig-tooltip-arrow {
+    position: absolute;
+    top: -8px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid white;
+}
+
+@keyframes bounce-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ocultar tooltip después de 5 segundos */
+.ig-tooltip {
+    animation: bounce-in 0.6s ease-out 0.5s both, fade-out 0.5s ease-out 5s forwards;
+}
+
+@keyframes fade-out {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
 .subtitle {
     font-size: 1.1rem;
     opacity: 0.9;
@@ -404,6 +461,64 @@ td:nth-child(2) strong {
     color: #667eea;
 }
 
+/* Loading State con Skeleton */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    display: block;
+    z-index: 10;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.loading-overlay.hidden {
+    display: none;
+}
+
+.skeleton-row {
+    display: flex;
+    gap: 20px;
+    padding: 18px 20px;
+    border-bottom: 1px solid #e9ecef;
+    align-items: center;
+}
+
+.skeleton-cell {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+    border-radius: 6px;
+    height: 20px;
+}
+
+.skeleton-cell.small {
+    width: 40px;
+    flex-shrink: 0;
+}
+
+.skeleton-cell.medium {
+    width: 100px;
+    flex-shrink: 0;
+}
+
+.skeleton-cell.large {
+    flex: 1;
+}
+
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.table-container {
+    position: relative;
+    min-height: 300px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .banner-header {
@@ -519,6 +634,17 @@ td:nth-child(2) strong {
         width: 18px;
         height: 18px;
     }
+
+    .ig-tooltip {
+        top: 60px;
+        right: 55px;
+        font-size: 0.85rem;
+        padding: 8px 12px;
+    }
+
+    .ig-tooltip-text {
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -628,5 +754,23 @@ td:nth-child(2) strong {
     .instagram-badge svg {
         width: 16px;
         height: 16px;
+    }
+
+    .ig-tooltip {
+        top: 52px;
+        right: 45px;
+        padding: 6px 10px;
+    }
+
+    .ig-tooltip-text {
+        font-size: 0.7rem;
+    }
+
+    .ig-tooltip-arrow {
+        right: 8px;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-bottom: 6px solid white;
+        top: -6px;
     }
 }

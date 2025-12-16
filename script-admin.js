@@ -43,9 +43,14 @@ function getCountryFlag(country) {
 
 // Cargar datos de la nube al iniciar
 document.addEventListener('DOMContentLoaded', async () => {
-    await loadFromCloud();
-    renderTable();
-    updateStats();
+    const loadingState = document.getElementById('loadingState');
+    try {
+        await loadFromCloud();
+        renderTable();
+        updateStats();
+    } finally {
+        loadingState.classList.add('hidden');
+    }
     setupMusicPlayer();
 });
 
