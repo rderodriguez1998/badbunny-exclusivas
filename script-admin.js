@@ -67,10 +67,10 @@ function addSong() {
     }
 }
 
-function deleteSong(id) {
+async function deleteSong(id) {
     if (confirm('¿Estás seguro de eliminar esta canción?')) {
         songs = songs.filter(song => song.id !== id);
-        saveToCloud();
+        await saveToCloud();
         renderTable();
         updateStats();
         showNotification('Canción eliminada');
