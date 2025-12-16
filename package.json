@@ -2,6 +2,7 @@
     "name": "badbunny-exclusivas",
     "version": "2.0.0",
     "description": "Bad Bunny canciones exclusivas tracker con backend seguro",
+    "type": "module",
     "main": "api/songs.js",
     "scripts": {
         "dev": "echo 'Starting Vercel dev server...'",
