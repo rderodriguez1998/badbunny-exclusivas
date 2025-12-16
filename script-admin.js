@@ -4,41 +4,98 @@ let songs = [];
 // Mapa de países a códigos ISO (para banderas)
 const countryToISO = {
     'puerto rico': 'pr',
+    'pr': 'pr',
     'usa': 'us',
+    'us': 'us',
     'estados unidos': 'us',
     'méxico': 'mx',
     'mexico': 'mx',
+    'mx': 'mx',
     'colombia': 'co',
+    'co': 'co',
     'argentina': 'ar',
+    'ar': 'ar',
     'chile': 'cl',
+    'cl': 'cl',
     'españa': 'es',
     'espana': 'es',
+    'es': 'es',
     'perú': 'pe',
     'peru': 'pe',
+    'pe': 'pe',
     'república dominicana': 'do',
     'republica dominicana': 'do',
+    'rd': 'do',
+    'do': 'do',
     'costa rica': 'cr',
+    'cr': 'cr',
     'panamá': 'pa',
     'panama': 'pa',
+    'pa': 'pa',
     'brasil': 'br',
+    'br': 'br',
     'ecuador': 'ec',
+    'ec': 'ec',
     'venezuela': 've',
+    've': 've',
     'uruguay': 'uy',
+    'uy': 'uy',
     'paraguay': 'py',
+    'py': 'py',
     'guatemala': 'gt',
+    'gt': 'gt',
     'honduras': 'hn',
+    'hn': 'hn',
     'el salvador': 'sv',
+    'sv': 'sv',
     'nicaragua': 'ni',
+    'ni': 'ni',
     'cuba': 'cu',
+    'cu': 'cu',
     'bolivia': 'bo',
+    'bo': 'bo',
     'canadá': 'ca',
-    'canada': 'ca'
+    'canada': 'ca',
+    'ca': 'ca'
+};
+
+// Mapeo de códigos ISO a nombres completos
+const countryNames = {
+    'pr': 'Puerto Rico',
+    'us': 'Estados Unidos',
+    'mx': 'México',
+    'co': 'Colombia',
+    'ar': 'Argentina',
+    'cl': 'Chile',
+    'es': 'España',
+    'pe': 'Perú',
+    'do': 'República Dominicana',
+    'cr': 'Costa Rica',
+    'pa': 'Panamá',
+    'br': 'Brasil',
+    'ec': 'Ecuador',
+    've': 'Venezuela',
+    'uy': 'Uruguay',
+    'py': 'Paraguay',
+    'gt': 'Guatemala',
+    'hn': 'Honduras',
+    'sv': 'El Salvador',
+    'ni': 'Nicaragua',
+    'cu': 'Cuba',
+    'bo': 'Bolivia',
+    'ca': 'Canadá'
 };
 
 function getCountryFlag(country) {
     const normalizedCountry = country.toLowerCase().trim();
     const isoCode = countryToISO[normalizedCountry] || 'xx';
     return `<span class="fi fi-${isoCode}" style="font-size: 1.3em; margin-right: 8px;"></span>`;
+}
+
+function getCountryFullName(country) {
+    const normalizedCountry = country.toLowerCase().trim();
+    const isoCode = countryToISO[normalizedCountry] || 'xx';
+    return countryNames[isoCode] || country;
 }
 
 // Cargar datos de la nube al iniciar
@@ -184,7 +241,7 @@ function renderTable(filteredSongs = null) {
             <td>${index + 1}</td>
             <td><strong>${song.name}</strong></td>
             <td>${formattedDate}</td>
-            <td>${getCountryFlag(song.city)} ${song.city}</td>
+            <td title="${getCountryFullName(song.city)}">${getCountryFlag(song.city)} ${song.city}</td>
             <td style="text-align: center;">${spotifyIcon}</td>
             <td class="actions">
                 <button class="btn-edit" onclick="editSong(${song.id})">Editar</button>
@@ -199,8 +256,18 @@ function renderTable(filteredSongs = null) {
 function filterTable(searchTerm) {
     const filtered = songs.filter(song => {
         const searchLower = searchTerm.toLowerCase();
+        
+        // Formatear fecha para búsqueda
+        const dateObj = new Date(song.date + 'T00:00:00');
+        const monthNames = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+        const day = String(dateObj.getDate()).padStart(2, '0');
+        const month = monthNames[dateObj.getMonth()];
+        const year = dateObj.getFullYear();
+        const formattedDate = `${day}/${month}/${year}`.toLowerCase();
+        
         return song.name.toLowerCase().includes(searchLower) ||
             song.city.toLowerCase().includes(searchLower) ||
+            formattedDate.includes(searchLower) ||
             song.date.includes(searchTerm);
     });
 
