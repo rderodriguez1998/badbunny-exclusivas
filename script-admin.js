@@ -1,6 +1,9 @@
 // Array para almacenar las canciones
 let songs = [];
 
+// API segura ya cargada desde secure-api.js
+// Ya no exponemos credenciales aquí
+
 // Mapa de países a códigos ISO (para banderas)
 const countryToISO = {
     'puerto rico': 'pr',
@@ -256,7 +259,7 @@ function renderTable(filteredSongs = null) {
 function filterTable(searchTerm) {
     const filtered = songs.filter(song => {
         const searchLower = searchTerm.toLowerCase();
-        
+
         // Formatear fecha para búsqueda
         const dateObj = new Date(song.date + 'T00:00:00');
         const monthNames = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
@@ -264,7 +267,7 @@ function filterTable(searchTerm) {
         const month = monthNames[dateObj.getMonth()];
         const year = dateObj.getFullYear();
         const formattedDate = `${day}/${month}/${year}`.toLowerCase();
-        
+
         return song.name.toLowerCase().includes(searchLower) ||
             song.city.toLowerCase().includes(searchLower) ||
             formattedDate.includes(searchLower) ||
