@@ -7,10 +7,10 @@ const path = require('path');
 // Cargar variables de entorno
 require('dotenv').config({ path: '.env.local' });
 
-// Importar los handlers de las APIs
-const songsHandler = require('./api/songs.js').default;
-const loginHandler = require('./api/login.js').default;
-const adminSongsHandler = require('./api/admin-songs.js').default;
+// Importar los handlers de las APIs (CommonJS)
+const songsHandler = require('./api/songs.js');
+const loginHandler = require('./api/login.js');
+const adminSongsHandler = require('./api/admin-songs.js');
 
 const PORT = 3003;
 
