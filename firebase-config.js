@@ -1,5 +1,6 @@
 // Configuración de almacenamiento en la nube usando JSONBin.io
-const JSONBIN_API_KEY = '$2a$10$xhO7YP0rz7RBPZz5BvgHPuGx5vC.L5R9kKqNZH3nFzJnkQc0RYzBi';
+// IMPORTANTE: Reemplaza esta API key con tu propia key de https://jsonbin.io
+const JSONBIN_API_KEY = '$2a$10$bz94lPavce.zJgp43Q98L.H8vWDoYQYcT5lC/RWmQ5VvIoqZ1Y/IW';
 let JSONBIN_BIN_ID = localStorage.getItem('jsonbin_id') || null;
 
 // API para guardar/cargar datos
