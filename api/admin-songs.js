@@ -1,5 +1,5 @@
 // API protegida para operaciones admin (POST, PUT, DELETE)
-import jwt from 'jsonwebtoken';
+const jwt = require('jsonwebtoken');
 
 // Verificar token JWT
 function verifyToken(req) {
@@ -17,7 +17,7 @@ function verifyToken(req) {
     }
 }
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
     // Verificar autenticación
     const user = verifyToken(req);
 

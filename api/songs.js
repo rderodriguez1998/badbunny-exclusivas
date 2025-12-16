@@ -1,5 +1,5 @@
 // API pública para obtener canciones (solo lectura)
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
     // Solo permitir GET
     if (req.method !== 'GET') {
         return res.status(405).json({ error: 'Método no permitido' });
@@ -25,4 +25,4 @@ export default async function handler(req, res) {
         console.error('Error:', error);
         return res.status(500).json({ error: 'Error del servidor' });
     }
-}
+};
