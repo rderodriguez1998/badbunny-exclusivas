@@ -20,7 +20,7 @@ document.getElementById('searchInput').addEventListener('input', (e) => {
     filterTable(e.target.value);
 });
 
-function addSong() {
+async function addSong() {
     const songName = document.getElementById('songName').value.trim();
     const date = document.getElementById('date').value;
     const city = document.getElementById('city').value.trim();
@@ -41,7 +41,7 @@ function addSong() {
                 showNotification('¡Canción actualizada exitosamente!');
             }
 
-            await saveToCloud();
+            // Resetear modo edición
             delete form.dataset.editingId;
             const submitBtn = form.querySelector('.btn-add');
             submitBtn.textContent = 'Agregar Canción';
