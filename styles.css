@@ -164,12 +164,14 @@ body {
     overflow: hidden;
 }
 
-.info-gif {
-    float: left;
-    width: 100px;
-    height: 100px;
-    margin-right: 18px;
-    margin-bottom: 10px;
+.gif-header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.info-gif-centered {
+    width: 70px;
+    height: 70px;
     border-radius: 8px;
     object-fit: cover;
 }
@@ -748,7 +750,7 @@ td:nth-child(2) strong {
     .banner-header {
         padding: 100px 15px 20px 15px;
         min-height: 180px;
-        background-position: center -100px;
+        background-position: center -25px;
     }
 
     .banner-title {
