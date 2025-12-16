@@ -8,14 +8,14 @@ const dbAPI = {
         if (!JSONBIN_BIN_ID) {
             return [];
         }
-        
+
         try {
             const response = await fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}/latest`, {
                 headers: {
                     'X-Master-Key': JSONBIN_API_KEY
                 }
             });
-            
+
             if (response.ok) {
                 const data = await response.json();
                 return data.record.songs || [];
@@ -40,7 +40,7 @@ const dbAPI = {
                     },
                     body: JSON.stringify({ songs: songs })
                 });
-                
+
                 if (response.ok) {
                     const data = await response.json();
                     JSONBIN_BIN_ID = data.metadata.id;
@@ -49,8 +49,10 @@ const dbAPI = {
                 }
                 return false;
             }
-            
+
             // Si ya existe, actualízalo
+            const response = await fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`, {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-Master-Key': JSONBIN_API_KEY
